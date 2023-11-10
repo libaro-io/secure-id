@@ -23,7 +23,8 @@
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "phpstan/phpstan": "^1.8"
     },
     "autoload": {
         "psr-4": {
@@ -36,6 +37,8 @@
         }
     },
     "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "analyse-json": "vendor/bin/phpstan analyse --error-format=json",
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
 
