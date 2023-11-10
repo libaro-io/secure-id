@@ -3,26 +3,27 @@
 namespace Libaro\SecureId\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Libaro\SecureId\Http\Controllers\Controller;
 use Libaro\SecureId\Http\Requests\WebhookValidationRequest;
+use Libaro\SecureId\Interfaces\WebhookHandlerInterface;
 
 class WebhookController extends Controller
 {
     /**
-     * @param  Request  $request
+     * @param WebhookValidationRequest $request
      */
     public function handle(WebhookValidationRequest $request): JsonResponse
     {
-        $webhookHandlers = config('secure-id.webhook_handlers');
+        $webhookHandlers = collect(config('secure-id.webhook_handlers'));
 
         $data = $request->validated();
         $phone = $data['phone'];
         $code = $data['code'];
 
         // Loop through each webhook handler and call the handleWebhook method
+        /** @var string $handlerClass */
         foreach ($webhookHandlers as $handlerClass) {
-            // Instantiate the handler
+            /** @var WebhookHandlerInterface $handler */
             $handler = app($handlerClass);
 
             // Call the handleWebhook method
@@ -30,7 +31,6 @@ class WebhookController extends Controller
         }
 
         // Return a JSON response indicating success
-        return response()->json(['message' => 'Webhook handled successfully']);
-
+        return new JsonResponse(['message' => 'Webhook handled successfully'], JsonResponse::HTTP_OK);
     }
 }

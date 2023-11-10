@@ -3,6 +3,7 @@
 namespace Libaro\SecureId\Services;
 
 use Exception;
+use \Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Jenssegers\Agent\Agent;
 
@@ -11,11 +12,18 @@ class SignAgentService
     /** @var Agent */
     private $agent;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->agent = new Agent();
     }
 
+    /**
+     * @return array<string, string>
+     * @throws Exception
+     */
     public function getSign(): array
     {
         $message = $this->getMessage();
@@ -25,7 +33,7 @@ class SignAgentService
     }
 
     /**
-     * @return mixed
+     * @return array<string, string>
      */
     private function getMessage(string $template = '', string $customCode = ''): array
     {
@@ -34,18 +42,25 @@ class SignAgentService
             throw new Exception('No apikey defined for secureid');
         }
 
-        $response = Http::post('https://secureid.digitalhq.com/api/generate', [
+        /** @var string $apiUrl */
+        $apiUrl = config('secure-id.api_url');
+
+        $response = Http::post(strval($apiUrl), [
             'api_key' => $apiKey,
             'type' => $this->getMethod(),
             'template' => $template,
             'customCode' => $customCode,
         ]);
 
-        $result = (array) json_decode($response->getBody()->getContents(), true);
+        /** @var array<string, string> $result */
+        $result = $response->json();
 
         return $result;
     }
 
+    /**
+     * @return string
+     */
     private function getMethod(): string
     {
         if ($this->agent->isDesktop()) {
@@ -55,7 +70,12 @@ class SignAgentService
         }
     }
 
-    private function getSignFromMessage($data): array
+
+    /**
+     * @param array<string, string> $data
+     * @return array<string, string>
+     */
+    private function getSignFromMessage(array $data): array
     {
         $method = $this->getMethod();
         $sign = [];

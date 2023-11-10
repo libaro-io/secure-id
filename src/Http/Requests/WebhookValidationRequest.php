@@ -9,9 +9,9 @@ use Illuminate\Foundation\Http\FormRequest;
 final class WebhookValidationRequest extends FormRequest
 {
     /**
-     * The validation rules which will be used during validation.
+     * @return array<string, string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'phone' => 'required|string',
