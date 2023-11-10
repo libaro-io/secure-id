@@ -1,4 +1,4 @@
-# Very short description of the package
+# Description of the package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/libaro/secure-id.svg?style=flat-square)](https://packagist.org/packages/libaro/secure-id)
 [![Total Downloads](https://img.shields.io/packagist/dt/libaro/secure-id.svg?style=flat-square)](https://packagist.org/packages/libaro/secure-id)
@@ -37,7 +37,7 @@ If you discover any security related issues, please email tim@libaro.be instead 
 
 ## Credits
 
--   [Tim Vande Walle](https://github.com/libaro)
+-   [Tim Vande Walle](https://github.com/libaro-io)
 
 ## License
 
