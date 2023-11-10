@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/libaro/secure-id.svg?style=flat-square)](https://packagist.org/packages/libaro/secure-id)
 ![GitHub Actions](https://github.com/libaro/secure-id/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+The Secure ID Laravel Package simplifies the integration of the Secure ID functionality into your Laravel projects. Secure ID is designed to facilitate a secure login procedure by generating sign requests, managing user responses through QR codes or SMS, and seamlessly logging users into your projects.
 
 ## Installation
 
@@ -30,9 +30,6 @@ composer test
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
@@ -41,7 +38,6 @@ If you discover any security related issues, please email tim@libaro.be instead 
 ## Credits
 
 -   [Tim Vande Walle](https://github.com/libaro)
--   [All Contributors](../../contributors)
 
 ## License
 
@@ -50,4 +46,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 ## Laravel Package Boilerplate
 
 This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
-# secure-id
