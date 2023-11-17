@@ -38,8 +38,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 If you discover any security related issues, please email tim@libaro.be instead of using the issue tracker.
 
 ## Credits
-
+Props to:
 -   [Tim Vande Walle](https://github.com/libaro-io)
+-   [Libaro](https://github.com/libaro-io)
+- https://www.laravelpackage.com
+- https://laravelpackageboilerplate.com
 
 ## License
 
