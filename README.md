@@ -18,6 +18,8 @@ composer require libaro/secure-id
 
 ```php
 // Usage description here
+// To publish the config file: 
+php artisan vendor:publish --provider="Libaro\SecureId\SecureIdServiceProvider" --tag="config"
 ```
 
 ### Testing
