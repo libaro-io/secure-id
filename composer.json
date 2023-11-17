@@ -23,8 +23,10 @@
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0",
-        "phpstan/phpstan": "^1.8"
+        "pestphp/pest": "^1.23",
+        "pestphp/pest-plugin-laravel": "^1.4",
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
@@ -39,12 +41,15 @@
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
         "analyse-json": "vendor/bin/phpstan analyse --error-format=json",
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
 
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
