@@ -20,11 +20,13 @@ class SignAgentService
         $this->agent = new Agent();
     }
 
+
     /**
-     * @return array<string, string>
+     * @param string $callbackUrl
+     * @return string[]
      * @throws Exception
      */
-    public function getSign(): array
+    public function getSign(string $callbackUrl = 'default'): array
     {
         $message = $this->getMessage();
         $sign = $this->getSignFromMessage($message);
@@ -32,10 +34,15 @@ class SignAgentService
         return $sign;
     }
 
+
     /**
-     * @return array<string, string>
+     * @param string $template
+     * @param string $customCode
+     * @param string $callbackUrl
+     * @return string[]
+     * @throws Exception
      */
-    private function getMessage(string $template = '', string $customCode = ''): array
+    private function getMessage(string $template = '', string $customCode = '', string $callbackUrl = 'default'): array
     {
         $apiKey = config('secure-id.api_key');
         if (! $apiKey) {
@@ -50,6 +57,7 @@ class SignAgentService
             'type' => $this->getMethod(),
             'template' => $template,
             'customCode' => $customCode,
+            'callback_url' => $callbackUrl,
         ]);
 
         /** @var array<string, string> $result */
