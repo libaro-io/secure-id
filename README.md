@@ -14,12 +14,34 @@ You can install the package via composer:
 composer require libaro/secure-id
 ```
 
+Publish the config file: 
+```php
+php artisan vendor:publish --provider="Libaro\SecureId\SecureIdServiceProvider" --tag="config"
+```
+The content of the config file:
+```php
+return [
+    'api_url' => env('SECURE_ID_API_URL', 'https://secureid.digitalhq.com/api/generate'),
+    'api_key' => env('SECURE_ID_API_KEY'),
+    'api_url_prefix' => env('SECURE_ID_API_URL_PREFIX', '/api/secure-id'),
+
+    'webhook_handlers' => [
+        \Support\Interfaces\SecureIdWebhookHandler::class,
+    ],
+];
+```
+
 ## Usage
 
+The default WebhookHandler can be replaced by a custom handler in the config file for handling events to authenticating users.
 ```php
-// Usage description here
-// To publish the config file: 
-php artisan vendor:publish --provider="Libaro\SecureId\SecureIdServiceProvider" --tag="config"
+class SecureIdWebhookHandler implements WebhookHandlerInterface
+{
+	public function handleWebhook(string $phone, string $code): void
+	{
+		event(new SMSSignRequestReceived($code, $phone));
+	}
+}
 ```
 
 ### Testing
@@ -41,6 +63,7 @@ If you discover any security related issues, please email tim@libaro.be instead 
 Props to:
 -   [Tim Vande Walle](https://github.com/libaro-io)
 -   [Libaro](https://github.com/libaro-io)
+-   [DigitalHQ](https://digitalhq.com)
 - https://www.laravelpackage.com
 - https://laravelpackageboilerplate.com
 
