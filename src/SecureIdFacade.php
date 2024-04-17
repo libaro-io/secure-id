@@ -4,9 +4,6 @@ namespace Libaro\SecureId;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Libaro\SecureId\Skeleton\SkeletonClass
- */
 class SecureIdFacade extends Facade
 {
     /**
