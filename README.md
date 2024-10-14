@@ -2,7 +2,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/libaro/secure-id.svg?style=flat-square)](https://packagist.org/packages/libaro/secure-id)
 [![Total Downloads](https://img.shields.io/packagist/dt/libaro/secure-id.svg?style=flat-square)](https://packagist.org/packages/libaro/secure-id)
-![GitHub Actions](https://github.com/libaro/secure-id/actions/workflows/main.yml/badge.svg)
+
+**This package is no longer maintained and has been moved to https://github.com/libaro-io/miqey-client**
 
 The Secure ID Laravel Package simplifies the integration of the Secure ID functionality into your Laravel projects. Secure ID is designed to facilitate a secure login procedure by generating sign requests, managing user responses through QR codes or SMS, and seamlessly logging users into your projects.
 
